@@ -11,7 +11,7 @@ $(document).ready(function () {
 		var item = $('#todo-list-item').val();
 
 		if(item) {
-			$("#list-items").append("<li class='list-group-item'><input class='checkbox' type='checkbox'/>" + item + "<a class='remove'><i class=\"far fa-trash-alt\"></i> </a></li>");
+			$("#list-items").append("<li class='list-group-item form-check'><input class='checkbox form-check-input' type='checkbox'/><label class=\"form-check-label\" for=\"defaultCheck1\">" + item + "</label><a class='remove'><i class=\"far fa-trash-alt\"></i> </a></li>");
 			// adds item to local storage
 			localStorage.setItem('listItems', $("#list-items").html());
 			$('#todo-list-item').val("");
