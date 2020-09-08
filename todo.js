@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
 	// Grabs any list items in local storage
 	$('#list-items').html(localStorage.getItem('listItems'));
 
@@ -10,9 +11,9 @@ $(document).ready(function () {
 		var item = $('#todo-list-item').val();
 
 		if(item) {
-			$("#list-items").append("<li><input class='checkbox' type='checkbox'/>" + item + "<a class='remove'><i class=\"far fa-trash-alt\"></i> </a><hr></li>");
+			$("#list-items").append("<li class='list-group-item'><input class='checkbox' type='checkbox'/>" + item + "<a class='remove'><i class=\"far fa-trash-alt\"></i> </a></li>");
 			// adds item to local storage
-			localStorage.setItem('list-items', $("#list-items").html());
+			localStorage.setItem('listItems', $("#list-items").html());
 			$('#todo-list-item').val("");
 		}
 	});
