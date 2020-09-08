@@ -2,19 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Maven+Pro&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="todo.css">
     <title>Personal Todo List</title>
 </head>
 <body>
-<ul id="list-items"></ul>
-<form class="add-items">
-    <input type="text" class="form-control" id="todo-list-item" placeholder="Example: Wash Dishes">
-    <button class="add" type="submit">Add to List</button>
-</form>
+<div class="container">
+
+    <div class="card">
+        <h1 class="app-title card-header">Tasks for Today</h1>
+            <ul class="list-group list-group-flush" id="list-items"></ul>
+        <form class="add-items card-footer">
+            <input type="text" class="form-control" id="todo-list-item" placeholder="Example: Wash Dishes">
+            <button class="add btn btn-dark" type="submit">Add to List</button>
+        </form>
+    </div>
+</div>
 
 
 <script src="//code.jquery.com/jquery-3.1.0.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/005a2c3e85.js" crossorigin="anonymous"></script>
 <script src="todo.js"></script>
 </body>
