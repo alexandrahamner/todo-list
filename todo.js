@@ -1,63 +1,39 @@
-"use strict";
+$(document).ready(function () {
+	// Grabs any list items in local storage
+	$('#list-items').html(localStorage.getItem('listItems'));
 
-// Using an IIFE to protect my code
-
-(function () {
-
-// This holds todoList items.
-	let todoItems = [];
-
-
-	function addTodo(input) {
-
-		const todo = {
-
-			input,
-			checked: false,
-			id: Date.now(),
-		};
-
-		todoItems.push(todo);
-		renderTodo(todo);
-
-	}
-
-// This selects the form element
-	const form = document.querySelector('.js-form');
-
-	form.addEventListener('submit', function (event) {
-		// prevents page refresh
+	// add items
+	$('.add-items').submit(function (event) {
+		//prevents the page from refreshing
 		event.preventDefault();
 
-		// selects the text input
-		const input = document.querySelector('.js-todo-input');
+		var item = $('#todo-list-item').val();
 
-		// gets the value of the input and removes the whitespace
-		const text = input.value.trim();
-		if (text !== "") {
-			addTodo(text);
-			input.value = '';
-			input.focus();
+		if(item) {
+			$("#list-items").append("<li><input class='checkbox' type='checkbox'/>" + item + "<a class='remove'><i class=\"far fa-trash-alt\"></i> </a><hr></li>");
+			// adds item to local storage
+			localStorage.setItem('list-items', $("#list-items").html());
+			$('#todo-list-item').val("");
 		}
 	});
-	
-//	This renders the todoList.
-	function renderTodo(todo) {
-		const list = document.querySelector(".js-todo-list");
-		const isChecked = todo.checked ? 'done': '';
-		const node = document.createElement("li");
 
-		node.setAttribute('class', 'todo-item ${isChecked}');
-		node.setAttribute('data-key', todo.id);
-		node.innerHTML = `
-		<input id="${todo.id}" type="checkbox"/>
-		<label for="${todo.id}" class="tick js-tick"></label>
-		<span>${todo.text}</span>
-		<button class="delete todo js-delete-todo">
-		<svg><use href="#delete-icon"></use></svg>
-		</button>
-		`;
+	$(document).on('change','.checkbox', function () {
+		if($(this).attr('checked')) {
+			$(this).removeAttr('checked');
+		} else {
+			$(this).attr('checked','checked');
+		}
 
-		list.append(node);
-	}
-}) ();
+		$(this).parent().toggleClass('completed');
+
+		localStorage.setItem('listItems', $('#list-items').html());
+	});
+
+	$(document).on('click','.remove', function () {
+		$(this).parent().remove();
+		localStorage.setItem('listItems', $('#list-items').html());
+
+	});
+
+});
+
